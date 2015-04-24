@@ -1,0 +1,24 @@
+//Phil Hofer
+//cathat.html
+//4/24/15 homework
+//This program animates a cat and a hat which circle each other.
+
+<img src="img/cat.png" id="cat" style="position: absolute">
+<img src="img/hat.png" id="hat" style="position: absolute">
+
+<script>
+  var cat = document.querySelector("#cat");
+  var hat = document.querySelector("#hat");
+  var angle = 0, lastTime = null;
+  function animate(time) {
+    if (lastTime != null)
+      angle += (time - lastTime) * 0.004;
+    lastTime = time;
+    hat.style.top = (Math.sin(angle) * 50) + "px";
+    hat.style.left = (Math.cos(angle) * 150) + "px";    
+    cat.style.top = (Math.sin(angle) * 150) + "px";
+    cat.style.left = (Math.cos(angle) * 50) + "px";
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+</script>
